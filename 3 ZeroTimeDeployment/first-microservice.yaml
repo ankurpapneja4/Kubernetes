@@ -1,0 +1,39 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: webapp
+  labels:
+    app: webapp
+    version: release0
+spec:
+  containers:
+    - name: webapp
+      image: richardchesterwood/k8s-fleetman-webapp-angular:release0
+
+---
+kind: Pod
+apiVersion: v1
+metadata:
+  name: webapp-release0-5
+  labels:
+    app: webapp
+    version: release0-5
+spec:
+  containers:
+    - name: webapp
+      image: richardchesterwood/k8s-fleetman-webapp-angular:release0-5
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: webapp
+spec:
+  selector:
+    app: webapp
+    version: release0
+  ports:
+    - name: webapp-http
+      port: 80
+      nodePort: 30080
+  type: NodePort

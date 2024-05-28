@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: eureka
+  labels:
+    app: eureka
+spec:
+  containers:
+      - name: eureka
+        image: ankurpapneja4/eureka-service:latest
